@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Les Petits Plats</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="./images/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container-header">
+        <img
+          class="background-img"
+          src="./images/Background.png"
+          alt="background"
+          height="667"
+          width="1440"
+        />
+        <img
+          class="logo-img"
+          src="./images/Logo.png"
+          alt="logo"
+          height="40"
+          width="328"
+        />
+        <div class="header-content">
+          <div class="main-heading">
+            CHERCHEZ PARMI PLUS DE 1500 RECETTES<br />
+            DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
+          </div>
+          <div class="container-search">
+            <div class="research-field">
+              <input
+                id="search-input"
+                type="text"
+                placeholder="Rechercher une recette, un ingrédient, ..."
+              />
+              <svg id="search-close" width="17" height="17" fill="none"></svg>
+              <div class="search-icon">
+                <svg width="28" height="29" fill="none"></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="dropdown-container">
+      <div class="dropdowns">
+        <div class="dropdown1">
+          <div class="dd1-text">
+            <h1>Ingrédients</h1>
+            <svg id="dropdownArrow1" width="15" height="8" fill="none"></svg>
+          </div>
+          <div class="dd1-inputcontainer">
+            <input type="text" class="dd1-input" tabindex="-1" id="dd1-input" />
+            <svg class="glass-icon" width="14" height="14" fill="none"></svg>
+          </div>
+          <div class="dd1-list" id="dd1-list"></div>
+        </div>
+        <div class="dropdown2">
+          <div class="dd2-text">
+            <h1>Appareils</h1>
+            <svg id="dropdownArrow2" width="15" height="8" fill="none"></svg>
+          </div>
+          <div class="dd2-inputcontainer">
+            <input type="text" class="dd2-input" tabindex="-1" id="dd2-input" />
+            <svg class="glass-icon" width="14" height="14" fill="none"></svg>
+          </div>
+          <div class="dd2-list" id="dd2-list"></div>
+        </div>
+        <div class="dropdown3">
+          <div class="dd3-text">
+            <h1>Ustensiles</h1>
+            <svg id="dropdownArrow3" width="15" height="8" fill="none"></svg>
+          </div>
+          <div class="dd3-inputcontainer">
+            <input type="text" class="dd3-input" tabindex="-1" id="dd3-input" />
+            <svg class="glass-icon" width="14" height="14" fill="none"></svg>
+          </div>
+          <div class="dd3-list" id="dd3-list"></div>
+        </div>
+      </div>
+      <div class="number-container">
+        <h1 id="number-recipes"></h1>
+      </div>
+    </section>
+    <div class="filters-selected" id="selectedContainer"></div>
+    <section class="cards-container" id="cards-container"></section>
+
+    <script src="./js/pages/index.js"></script>
+    <script src="./js/models/header.js"></script>
+  </body>
+</html>
