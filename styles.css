@@ -187,6 +187,149 @@ body {
     outline: none;
 }
 
+/*  CARDS  */
+
+.cards-container {
+    padding-top: 22px;
+    padding-left: clamp(7px, calc(3.5vw + 2px), 102px);
+    padding-right: clamp(7px, calc(3.5vw + 2px), 102px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    row-gap: clamp(7px, calc(4vw + 6px), 66px);
+    column-gap: clamp(7px, calc(3vw + 6px), 48px);
+    background: #EDEDED;
+}
+
+@media (max-width: 950px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+}
+
+
+@media (max-width: 465px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+
+@media (min-width: 1440px) {
+    .cards-container {
+        padding-left: 102px;
+        padding-right: 102px;
+    }
+}
+
+.recipes-card img {
+    object-fit: cover;
+    height: 253px;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.recipes-card {
+    border-radius: 21px;
+    background: #FFF;
+    box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+}
+
+.container-card-text {
+    width: 100%;
+    padding-left: 6.5%;
+    padding-right: 6.5%;
+    height: 478px;
+    min-height: 478px;
+}
+
+
+.container-card-text h1 {
+    padding-top: 21px;
+    padding-bottom: 29px;
+    color: #000;
+    font-family: "Anton", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container-card-text h2 {
+    color: #7A7A7A;
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.08px;
+    text-transform: uppercase;
+    padding-bottom: 15px;
+}
+
+.recipe-description {
+    color: #1B1B1B;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    overflow: hidden;
+    max-height: 76px;
+}
+
+.recipe-description:hover {
+    max-height: 100%;
+}
+
+.recipe-description:hover~.description-container {
+    max-height: 100%;
+}
+
+.description-container {
+    margin-bottom: 28px;
+}
+
+.recipe-ingredients {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 21px;
+    padding-bottom: 61px;
+}
+
+.ingredient-name {
+    color: #1B1B1B;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.ingredient-quantity {
+    color: #7A7A7A;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.recipe-time {
+    display: inline-flex;
+    padding: 5px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    background: #FFD15B;
+    position: absolute;
+    top: 21px;
+    right: 22px;
+}
+
+.recipe-container {
+    position: relative;
+}
+
 
 /* DROPDOWNS  */
 
@@ -200,7 +343,6 @@ body {
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin-top: 180px;
 }
 
 #number-recipes {
@@ -354,5 +496,105 @@ body {
     line-height: normal;
     padding-left: 8px;
     background: #FFF;
+}
+
+.dd1-list,
+.dd2-list,
+.dd3-list {
+    display: flex;
+    width: 163px;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #1B1B1B;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    z-index: 10;
+    background: #FFF;
+    row-gap: 13px;
+}
+
+.dd1-list p,
+.dd2-list p,
+.dd3-list p {
+    height: 19px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 10;
+    width: 195px;
+    padding-left: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.dd1-list p:not(.selected):hover,
+.dd2-list p:not(.selected):hover,
+.dd3-list p:not(.selected):hover {
+    overflow: visible;
+}
+
+.dd1-list p:not(.selected)::before,
+.dd2-list p:not(.selected)::before,
+.dd3-list p:not(.selected)::before {
+    content: ""; 
+    position: absolute;
+    top: -10px; 
+    bottom: -10px; 
+    left: 0;
+    right: 0;
+    background: #FFD15B;
+    z-index: -1; 
+    opacity: 0; 
+    transition: opacity 0.1s linear; 
+}
+
+.dd1-list p:not(.selected):hover::before,
+.dd2-list p:not(.selected):hover::before,
+.dd3-list p:not(.selected):hover::before {
+    opacity: 1; /* Make the pseudo-element visible on hover */
+}
+
+
+.filters-selected {
+    padding-left: clamp(7px, calc(3.5vw + 2px), 102px);
+    width: 100%;
+    background: #EDEDED;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; 
+}
+
+.selected-item {
+    display: inline-flex;
+    padding: 17px 18px;
+    align-items: center;
+    gap: 60px;
+    border-radius: 10px;
+    background: #FFD15B;
+    color: #000;
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    height: 53px;
+}
+
+.selected {
+    color: #1B1B1B;
+font-family: Manrope;
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+flex-shrink: 0;
+background: #FFD15B;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-right: 10px;
 }
 

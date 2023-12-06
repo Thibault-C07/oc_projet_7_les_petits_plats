@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
@@ -52,7 +52,16 @@
               />
               <svg id="search-close" width="17" height="17" fill="none"></svg>
               <div class="search-icon">
-                <svg width="28" height="29" fill="none"></svg>
+                <svg width="28" height="29" viewBox="0 0 28 29" fill="none">
+                  <circle cx="10" cy="10.4219" r="9.5" stroke="white" />
+                  <line
+                    x1="18.3536"
+                    y1="19.0683"
+                    x2="27.3536"
+                    y2="28.0683"
+                    stroke="white"
+                  />
+                </svg>
               </div>
             </div>
           </div>
@@ -64,7 +73,19 @@
         <div class="dropdown1">
           <div class="dd1-text">
             <h1>Ingrédients</h1>
-            <svg id="dropdownArrow1" width="15" height="8" fill="none"></svg>
+            <svg
+              id="dropdownArrow1"
+              width="15"
+              height="8"
+              viewBox="0 0 15 8"
+              fill="none"
+            >
+              <path
+                d="M1 1L7.5 7L14 1"
+                stroke="#1B1B1B"
+                stroke-linecap="round"
+              />
+            </svg>
           </div>
           <div class="dd1-inputcontainer">
             <input type="text" class="dd1-input" tabindex="-1" id="dd1-input" />
@@ -75,7 +96,19 @@
         <div class="dropdown2">
           <div class="dd2-text">
             <h1>Appareils</h1>
-            <svg id="dropdownArrow2" width="15" height="8" fill="none"></svg>
+            <svg
+              id="dropdownArrow1"
+              width="15"
+              height="8"
+              viewBox="0 0 15 8"
+              fill="none"
+            >
+              <path
+                d="M1 1L7.5 7L14 1"
+                stroke="#1B1B1B"
+                stroke-linecap="round"
+              />
+            </svg>
           </div>
           <div class="dd2-inputcontainer">
             <input type="text" class="dd2-input" tabindex="-1" id="dd2-input" />
@@ -86,7 +119,19 @@
         <div class="dropdown3">
           <div class="dd3-text">
             <h1>Ustensiles</h1>
-            <svg id="dropdownArrow3" width="15" height="8" fill="none"></svg>
+            <svg
+              id="dropdownArrow1"
+              width="15"
+              height="8"
+              viewBox="0 0 15 8"
+              fill="none"
+            >
+              <path
+                d="M1 1L7.5 7L14 1"
+                stroke="#1B1B1B"
+                stroke-linecap="round"
+              />
+            </svg>
           </div>
           <div class="dd3-inputcontainer">
             <input type="text" class="dd3-input" tabindex="-1" id="dd3-input" />
@@ -102,7 +147,13 @@
     <div class="filters-selected" id="selectedContainer"></div>
     <section class="cards-container" id="cards-container"></section>
 
-    <script src="./js/pages/index.js"></script>
-    <script src="./js/models/header.js"></script>
+    <script src="./models/header.js"></script>
+    <script src="./data/recipes.js"></script>
+    <script src="./pages/index.js"></script>
+    <script src="./models/ingredients.js"></script>
+    <script src="./models/appliances.js"></script>
+    <script src="./models/ustensils.js"></script>
+    <script src="./search/searchByFilter.js"></script>
+    <script src="./search/searchBar.js"></script>
   </body>
 </html>
