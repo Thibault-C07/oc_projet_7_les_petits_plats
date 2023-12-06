@@ -3,7 +3,24 @@ searchInput.addEventListener("input", function () {
 });
 
 function searchBar() {
-  /* to be implemented */
+  const userInput = searchInput.value.toLowerCase();
+  if (userInput.length >= 3) {
+    selectedFilters = [];
+    results = recipes.filter((recipe) => {
+      const titleMatch = recipe.name.toLowerCase().includes(userInput);
+      const ingredientsMatch = recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(userInput)
+      );
+      const descriptionMatch = recipe.description
+        .toLowerCase()
+        .includes(userInput);
+      return titleMatch || ingredientsMatch || descriptionMatch;
+    });
+    updateSearchResults(results);
+    fillCards(results);
+  } else {
+    resetRecipes();
+  }
 }
 
 function updateSearchResults(results) {
