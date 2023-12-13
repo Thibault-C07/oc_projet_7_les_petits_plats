@@ -2,8 +2,33 @@ searchInput.addEventListener("input", function () {
   searchBar();
 });
 
+/* Loop main search*/
 function searchBar() {
-  /* to be implemented */
+  const userInput = searchInput.value.toLowerCase();
+  if (userInput.length >= 3) {
+    selectedFilters = [];
+    results = [];
+
+    for (let i = 0; i < recipes.length; i++) {
+      const recipe = recipes[i];
+      const titleMatch = recipe.name.toLowerCase().includes(userInput);
+      const ingredientsMatch = recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(userInput)
+      );
+      const descriptionMatch = recipe.description
+        .toLowerCase()
+        .includes(userInput);
+
+      if (titleMatch || ingredientsMatch || descriptionMatch) {
+        results.push(recipe);
+      }
+    }
+
+    updateSearchResults(results);
+    fillCards(results);
+  } else {
+    resetRecipes();
+  }
 }
 
 function updateSearchResults(results) {
