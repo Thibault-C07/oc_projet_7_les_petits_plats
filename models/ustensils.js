@@ -1,3 +1,6 @@
+/* Application de la methode reduce() */
+
+// On selectionne toutes les recettes
 const allUstensils = recipes.reduce((ustensils, recipe) => {
   recipe.ustensils.forEach((ustensil) => {
     const lowerCaseUstensil = ustensil.toLowerCase();
@@ -5,9 +8,11 @@ const allUstensils = recipes.reduce((ustensils, recipe) => {
       ustensils.push(lowerCaseUstensil);
     }
   });
+  // On retourne tous les ustensiles
   return ustensils;
 }, []);
 
+// Ici on selectionne uniquement les résultats trouvés
 function getUniqueUstensils(results) {
   const uniqueUstensils = results.reduce((ustensils, recipe) => {
     recipe.ustensils.forEach((ustensil) => {

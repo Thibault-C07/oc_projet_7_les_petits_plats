@@ -1,3 +1,5 @@
+/* Application de la methode reduce() */
+
 const allIngredients = recipes.reduce((ingredients, recipe) => {
   recipe.ingredients.forEach((ingredient) => {
     if (

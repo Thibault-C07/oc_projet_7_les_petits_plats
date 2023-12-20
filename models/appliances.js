@@ -1,3 +1,5 @@
+/* Application de la methode reduce() */
+
 const allAppliances = recipes.reduce((appliances, recipe) => {
   if (!appliances.includes(recipe.appliance.toLowerCase())) {
     appliances.push(recipe.appliance.toLowerCase());

@@ -429,11 +429,11 @@ body {
     transition: transform 0.3s ease;
 }
 
-.rotate180 {
-    transform: rotate(180deg);
+.dropdown1::-webkit-scrollbar,
+.dropdown2::-webkit-scrollbar,
+.dropdown3::-webkit-scrollbar {
+    display: none;
 }
-
-
 
 .dd1-text,
 .dd2-text,
