@@ -12,7 +12,7 @@ const allUstensils = recipes.reduce((ustensils, recipe) => {
   return ustensils;
 }, []);
 
-// Ici on selectionne uniquement les résultats trouvés
+// Fonction qui réduit la liste des ustensiles et ressort dans un tableau les ustensiles filtrés
 function getUniqueUstensils(results) {
   const uniqueUstensils = results.reduce((ustensils, recipe) => {
     recipe.ustensils.forEach((ustensil) => {
@@ -28,8 +28,9 @@ function getUniqueUstensils(results) {
 
 const dd3ListContainer = document.querySelector(".dd3-list");
 dd3ListContainer.innerHTML = "";
-
+// Si aucun élément n'est selectionné
 if (selectedContainer.children.length === 0 && results.length === 0) {
+  // Alors on fait apparaitre tous les ustensiles
   allUstensils.forEach((ustensil) => {
     const pElement = document.createElement("p");
     pElement.textContent = ustensil;
@@ -38,6 +39,7 @@ if (selectedContainer.children.length === 0 && results.length === 0) {
     };
     dd3ListContainer.appendChild(pElement);
   });
+  // Ou la liste unique d'ustensiles
 } else {
   const uniqueUstensils = getUniqueUstensils(results);
   uniqueUstensils.forEach((ustensil) => {

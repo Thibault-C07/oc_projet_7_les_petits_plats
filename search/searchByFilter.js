@@ -1,23 +1,30 @@
+/* Fonction de gestion de la sélection ou désélection d'éléments en fonction du filtre */
 function selectItem(selectedElement) {
   const filterValue = selectedElement.textContent.toLowerCase();
+  // Si le filtre n'est pas présent
   if (!selectedFilters.some((filter) => filter.toLowerCase() === filterValue)) {
+    // On ajoute le filtre au tableau et une recherche est effectuée
     selectedFilters.push(filterValue);
     searchByFilters(selectedFilters);
   } else {
+    // Récupération de l'élément sélectionné cloné
     const selectedItemClone = document.querySelector(
       `.selected-item[data-filter="${filterValue}"]`
     );
     if (selectedItemClone) {
+      // Appel de la fonction pour supprimer l'élément sélectionné
       removeSelectedItem(selectedElement, selectedItemClone);
       setTimeout(function () {
-        // timeout to wait for the DOM to update
+        // Timeout pour attendre la mise à jour du DOM avant de déclencher la nouvelle recherche avec les filtres mis à jour
         searchByFilters(selectedFilters);
       }, 0);
     }
   }
+  // Appel de la fonction pour mettre à jour le visuel des éléments sélectionnés
   updateSelectedVisuals();
 }
 
+/* Fonction permettant d'ajuster le visuel lors de la sélection des éléments dans les filtres */
 function updateSelectedItemLayout(selectedElement) {
   const filterValue = selectedElement.textContent.trim().toLowerCase();
   const svgDropdown = selectedElement.querySelector("svg");
@@ -29,22 +36,29 @@ function updateSelectedItemLayout(selectedElement) {
     const existingClone = document.querySelector(
       `.selected-item[data-filter="${filterValue}"]`
     );
-
+    // S'il n'existe pas de clone avec la même valeur de filtre
     if (!existingClone) {
+      // Un p est crée
       selectedItemClone = document.createElement("p");
       selectedItemClone.textContent = filterValue;
+      // On crée une classe
       selectedItemClone.classList.add("selected-item");
       selectedItemClone.setAttribute("data-filter", filterValue);
       selectedItemClone.onclick = function () {
         selectItem(this);
       };
+      // Création d'un conteneur pour accueillir le clone
       selectedContainer.appendChild(selectedItemClone);
     }
   }
+  // S'il n'y a pas d'élément svg
   if (!svgDropdown) {
+    // On en créé un
     createDropdownSVG();
   }
+  // S'il n'y a pas de clone svg
   if (!selectedItemClone.querySelector("svg")) {
+    // Alors on en crée un
     createCloneSVG();
   }
 
@@ -83,7 +97,7 @@ function updateSelectedItemLayout(selectedElement) {
     svgElement.appendChild(pathElement);
     selectedElement.appendChild(svgElement);
   }
-  // clone svg
+  // Création des clones svg
   function createCloneSVG() {
     if (!selectedItemClone) {
       console.error("selectedItemClone is undefined");
@@ -133,7 +147,7 @@ function removeSelectedItem(selectedElement, selectedItemClone) {
 
   if (document.body.contains(selectedItemClone)) {
     setTimeout(function () {
-      // timeout to wait for the DOM to update
+      // Timeout pour attendre la mise à jour du DOM
       selectedItemClone.querySelector("svg")?.remove();
       selectedItemClone.remove();
     }, 0);
@@ -150,6 +164,7 @@ function resetPageState() {
   updateRecipeCount();
 }
 
+/* Fonction de mise à jour des items selectionnés */
 function updateSelectedVisuals() {
   const containers = [
     dd1ListContainer,
@@ -158,6 +173,7 @@ function updateSelectedVisuals() {
     selectedContainer,
   ];
 
+  // Vérification si les filtres et textes associés sont toujours valides en fonction du filtre sélectionné
   containers.forEach((container) => {
     const allSelectedItems = container.querySelectorAll('[class*="selected"]');
 
@@ -169,6 +185,7 @@ function updateSelectedVisuals() {
         !selectedFilters.includes(filterValue) &&
         !selectedFilters.includes(selectedItemText)
       ) {
+        // Suppression des éléments qui ne sont plus valides
         removeSelectedItem(selectedItem, null, null);
       }
     });

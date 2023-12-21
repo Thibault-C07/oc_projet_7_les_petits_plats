@@ -1,5 +1,3 @@
-// reset&close the input with cross icon
-
 const searchInput = document.getElementById("search-input");
 const searchClose = document.getElementById("search-close");
 
@@ -16,7 +14,7 @@ searchClose.addEventListener("click", function () {
   searchClose.style.display = "none";
 });
 
-// dealing with absolute-positionned header background
+// Fonction de gestion de la position de l'image en background
 function setContainerHeight() {
   const backgroundImage = document.querySelector(".background-img");
   const containerHeader = document.querySelector(".container-header");
