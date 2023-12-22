@@ -22,6 +22,7 @@ down3.addEventListener("click", function () {
   dropdown3.classList.toggle("open");
 });
 
+/* Filtrage en temps réel des dropdowns */
 // Dropdown 1
 const dd1Input = document.getElementById("dd1-input");
 
@@ -29,6 +30,7 @@ dd1Input.addEventListener("input", function () {
   const inputValue = dd1Input.value.toLowerCase();
   const dd1ListContainer = document.getElementById("dd1-list");
   const dd1Options = dd1ListContainer.querySelectorAll("p");
+
   dd1Options.forEach((option) => {
     const optionText = option.textContent.toLowerCase();
     const isMatch = optionText.includes(inputValue);

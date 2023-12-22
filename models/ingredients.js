@@ -1,6 +1,6 @@
 /* Application de la methode reduce() */
 
-// On selectionne toutes les recettes
+// Recherche de départ ou l'on sélectionne toutes les recettes
 const allIngredients = recipes.reduce((ingredients, recipe) => {
   recipe.ingredients.forEach((ingredient) => {
     if (

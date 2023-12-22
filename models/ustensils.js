@@ -1,6 +1,6 @@
 /* Application de la methode reduce() */
 
-// On selectionne toutes les recettes
+// Recherche de départ ou l'on sélectionne toutes les recettes
 const allUstensils = recipes.reduce((ustensils, recipe) => {
   recipe.ustensils.forEach((ustensil) => {
     const lowerCaseUstensil = ustensil.toLowerCase();

@@ -1,6 +1,6 @@
 /* Application de la methode reduce() */
 
-// On selectionne toutes les recettes
+// Recherche de départ ou l'on sélectionne toutes les recettes
 const allAppliances = recipes.reduce((appliances, recipe) => {
   if (!appliances.includes(recipe.appliance.toLowerCase())) {
     appliances.push(recipe.appliance.toLowerCase());
@@ -34,7 +34,7 @@ if (selectedContainer.children.length === 0 && results.length === 0) {
     };
     dd2ListContainer.appendChild(pElement);
   });
-  // Ou la liste unique d'appareils
+  // Sinon on lance la liste unique d'appareils
 } else {
   const uniqueAppliances = getUniqueAppliances(results);
   uniqueAppliances.forEach((appliance) => {
