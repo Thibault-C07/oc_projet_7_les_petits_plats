@@ -18,7 +18,7 @@ function getUniqueAppliances(results) {
 const dd2ListContainer = document.querySelector(".dd2-list");
 dd2ListContainer.innerHTML = "";
 
-if (selectedContainer.children.length === 0 && results.length === 0) {
+if (selectedContainer.children.length === 0) {
   allAppliances.forEach((appliance) => {
     const pElement = document.createElement("p");
     pElement.textContent = appliance;

@@ -2,7 +2,7 @@ searchInput.addEventListener("input", function () {
   searchBar();
 });
 
-/* Loop main search*/
+/* for loop main search*/
 function searchBar() {
   const userInput = searchInput.value.toLowerCase();
   if (userInput.length >= 3) {
@@ -71,6 +71,7 @@ function searchByFilters(selectedFilters) {
   fillCards(results);
 }
 
+/* Fonction de mise à jour des résultats et des dropdowns en fonction des filtres sélectionnés */
 function updateSearchResults(results) {
   // Appel des 3 fonctions pour extraire les différentes listes à partir des résultats de recherche
   const uniqueIngredients = getUniqueIngredients(results);

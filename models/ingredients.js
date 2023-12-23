@@ -34,7 +34,7 @@ const selectedContainer = document.getElementById("selectedContainer");
 
 dd1ListContainer.innerHTML = "";
 
-if (selectedContainer.children.length === 0 && results.length === 0) {
+if (selectedContainer.children.length === 0) {
   allIngredients.forEach((ingredient) => {
     const pElement = document.createElement("p");
     pElement.textContent = ingredient.ingredient;

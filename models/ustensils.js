@@ -24,7 +24,7 @@ function getUniqueUstensils(results) {
 const dd3ListContainer = document.querySelector(".dd3-list");
 dd3ListContainer.innerHTML = "";
 
-if (selectedContainer.children.length === 0 && results.length === 0) {
+if (selectedContainer.children.length === 0) {
   allUstensils.forEach((ustensil) => {
     const pElement = document.createElement("p");
     pElement.textContent = ustensil;

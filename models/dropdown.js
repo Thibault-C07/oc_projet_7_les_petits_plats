@@ -1,28 +1,25 @@
-/* Eléments du DOM */
 const dropdown1 = document.querySelector(".dropdown1");
 const dropdown2 = document.querySelector(".dropdown2");
 const dropdown3 = document.querySelector(".dropdown3");
-const down1 = document.querySelector(".dd1-text");
-const down2 = document.querySelector(".dd2-text");
-const down3 = document.querySelector(".dd3-text");
+const visiblePart1 = document.querySelector(".dd1-text");
+const visiblePart2 = document.querySelector(".dd2-text");
+const visiblePart3 = document.querySelector(".dd3-text");
 const dropdownArrow1 = document.getElementById("dropdownArrow1");
 const dropdownArrow2 = document.getElementById("dropdownArrow2");
 const dropdownArrow3 = document.getElementById("dropdownArrow3");
 
-/* Listener pour ouvrir les dropdowns */
-down1.addEventListener("click", function () {
+visiblePart1.addEventListener("click", function () {
   dropdown1.classList.toggle("open");
 });
 
-down2.addEventListener("click", function () {
+visiblePart2.addEventListener("click", function () {
   dropdown2.classList.toggle("open");
 });
 
-down3.addEventListener("click", function () {
+visiblePart3.addEventListener("click", function () {
   dropdown3.classList.toggle("open");
 });
 
-/* Filtrage en temps réel des dropdowns */
 // Dropdown 1
 const dd1Input = document.getElementById("dd1-input");
 
@@ -30,7 +27,6 @@ dd1Input.addEventListener("input", function () {
   const inputValue = dd1Input.value.toLowerCase();
   const dd1ListContainer = document.getElementById("dd1-list");
   const dd1Options = dd1ListContainer.querySelectorAll("p");
-
   dd1Options.forEach((option) => {
     const optionText = option.textContent.toLowerCase();
     const isMatch = optionText.includes(inputValue);
