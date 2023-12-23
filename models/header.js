@@ -7,11 +7,13 @@ searchInput.addEventListener("input", function () {
   } else {
     searchClose.style.display = "none";
   }
+  searchBar();
 });
 
 searchClose.addEventListener("click", function () {
   searchInput.value = "";
   searchClose.style.display = "none";
+  resetRecipes();
 });
 
 // Fonction de gestion de la position de l'image en background

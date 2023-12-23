@@ -26,6 +26,47 @@ function searchBar() {
   }
 }
 
+function searchByFilters(selectedFilters) {
+  const userInput = searchInput.value.toLowerCase();
+  let results = [];
+
+  if (userInput.length >= 3) {
+    // Recherche par texte
+    results = recipes.filter((recipe) => {
+      const titleMatch = recipe.name.toLowerCase().includes(userInput);
+      const ingredientsMatch = recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(userInput)
+      );
+      const descriptionMatch = recipe.description
+        .toLowerCase()
+        .includes(userInput);
+      return titleMatch || ingredientsMatch || descriptionMatch;
+    });
+  } else {
+    // Si la recherche par texte est vide, utilisez la liste complète
+    results = recipes.slice();
+  }
+
+  // Filtrage supplémentaire en fonction des filtres sélectionnés
+  for (const filter of selectedFilters) {
+    results = results.filter((recipe) => {
+      const ingredientsMatch = recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(filter)
+      );
+      const applianceMatch = recipe.appliance.toLowerCase().includes(filter);
+      const ustensilsMatch = recipe.ustensils.some((ustensil) =>
+        ustensil.toLowerCase().includes(filter)
+      );
+
+      return ingredientsMatch || applianceMatch || ustensilsMatch;
+    });
+  }
+
+  updateSearchResults(results);
+  fillCards(results);
+}
+
+/*
 // Fonction avec boucle for pour rechercher dans les filtres
 function searchByFilters(selectedFilters) {
   let results = [];
@@ -57,7 +98,7 @@ function searchByFilters(selectedFilters) {
   // On met à jour le résultat et on affiche la carte associée
   updateSearchResults(results);
   fillCards(results);
-}
+} */
 
 /* Fonction de mise à jour des résultats et des dropdowns en fonction des filtres sélectionnés */
 function updateSearchResults(results) {
@@ -88,7 +129,7 @@ function updateSearchResults(results) {
   });
 }
 
-/* Fonctionne de recherche par texte à l'intérieur des dropdowns */
+/* Fonction de recherche par texte à l'intérieur des dropdowns */
 function findDropdownElementByText(text, containers) {
   for (const container of containers) {
     // Sélection des éléments p des conteneurs des dropdowns

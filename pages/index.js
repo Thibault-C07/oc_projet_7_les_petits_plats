@@ -1,4 +1,3 @@
-/* Variable à portée globale */
 let results = [];
 let selectedFilters = [];
 let selectedItemClone;
