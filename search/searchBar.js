@@ -22,7 +22,7 @@ function searchBar() {
     updateSearchResults(results);
     fillCards(results);
   } else {
-    resetRecipes();
+    searchByFilters(selectedFilters);
   }
 }
 
@@ -61,44 +61,9 @@ function searchByFilters(selectedFilters) {
       return ingredientsMatch || applianceMatch || ustensilsMatch;
     });
   }
-
   updateSearchResults(results);
   fillCards(results);
 }
-
-/*
-// Fonction avec boucle for pour rechercher dans les filtres
-function searchByFilters(selectedFilters) {
-  let results = [];
-  for (const recipe of recipes) {
-    let filterMatch = true;
-    for (const filter of selectedFilters) {
-      // Recherche d'un ingrédient, appareil ou ustensile correspondant
-      if (
-        !(
-          recipe.ingredients.some((ingredient) =>
-            ingredient.ingredient.toLowerCase().includes(filter.toLowerCase())
-          ) ||
-          recipe.appliance.toLowerCase().includes(filter.toLowerCase()) ||
-          recipe.ustensils.some((ustensil) =>
-            ustensil.toLowerCase().includes(filter.toLowerCase())
-          )
-        )
-        // S'il n'y a pas match on break
-      ) {
-        filterMatch = false;
-        break;
-      }
-    }
-    // S'il y a match on push la recette dans le résultat
-    if (filterMatch) {
-      results.push(recipe);
-    }
-  }
-  // On met à jour le résultat et on affiche la carte associée
-  updateSearchResults(results);
-  fillCards(results);
-} */
 
 /* Fonction de mise à jour des résultats et des dropdowns en fonction des filtres sélectionnés */
 function updateSearchResults(results) {
