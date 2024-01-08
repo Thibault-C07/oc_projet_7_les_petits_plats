@@ -1,3 +1,8 @@
+let results = [];
+let selectedFilters = [];
+let selectedItemClone;
+let selectedItem;
+
 document.addEventListener("DOMContentLoaded", function () {
   fillCards(recipes);
   updateRecipeCount();
