@@ -156,9 +156,14 @@ function removeSelectedItem(selectedElement, selectedItemClone) {
 
 /* Fonction de reset lorsque plus aucun élément n'est sélectionné */
 function resetPageState() {
-  updateDropdownOptions(1, allIngredients, "ingredient");
+  updateDropdownOptions(1, allFilters, "ingredient");
+  updateDropdownOptions(2, allFilters, "appliance");
+  updateDropdownOptions(3, allFilters, "ustensil");
+
+  /*updateDropdownOptions(1, allIngredients, "ingredient");
   updateDropdownOptions(2, allAppliances, "appliance");
-  updateDropdownOptions(3, allUstensils, "ustensil");
+  updateDropdownOptions(3, allUstensils, "ustensil"); */
+
   // Mise à jour cartes et nombre de recettes
   fillCards(recipes);
   updateRecipeCount();
