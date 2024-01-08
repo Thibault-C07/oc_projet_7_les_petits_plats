@@ -1,6 +1,23 @@
+const containers = [dd1ListContainer, dd2ListContainer, dd3ListContainer];
+
 searchInput.addEventListener("input", function () {
   searchBar();
 });
+
+function createParagraph(text, clickHandler) {
+  const pElement = document.createElement("p");
+  pElement.textContent = text.toLowerCase();
+  pElement.onclick = clickHandler;
+  return pElement;
+}
+
+function updateDropdown(dropdown, options, clickHandler) {
+  dropdown.innerHTML = "";
+  options.forEach((option) => {
+    const optionElement = createParagraph(option, clickHandler);
+    dropdown.appendChild(optionElement);
+  });
+}
 
 /* Fonction de recherche avec la méthode filter() */
 function searchBar() {
@@ -66,18 +83,22 @@ function searchByFilters(selectedFilters) {
 }
 
 /* Fonction de mise à jour des résultats et des dropdowns en fonction des filtres sélectionnés */
+
 function updateSearchResults(results) {
   // Appel des 3 fonctions pour extraire les différentes listes à partir des résultats de recherche
-  const uniqueIngredients = getUniqueIngredients(results);
+
+  const uniqueIngredients = getUniqueFilters(results, "ingredients");
+  const uniqueAppliances = getUniqueFilters(results, "appliances");
+  const uniqueUstensils = getUniqueFilters(results, "ustensils");
+
+  /*const uniqueIngredients = getUniqueIngredients(results);
   const uniqueAppliances = getUniqueAppliances(results);
-  const uniqueUstensils = getUniqueUstensils(results);
+  const uniqueUstensils = getUniqueUstensils(results); */
 
   // Mise à jour des dropdowns
   updateDropdownOptions(1, uniqueIngredients, "ingredient");
   updateDropdownOptions(2, uniqueAppliances, "appliance");
   updateDropdownOptions(3, uniqueUstensils, "ustensil");
-
-  const containers = [dd1ListContainer, dd2ListContainer, dd3ListContainer];
 
   selectedFilters.forEach((filter) => {
     const isInIngredients = uniqueIngredients.includes(filter);
@@ -120,7 +141,41 @@ function resetRecipes() {
   updateRecipeCount();
 }
 
-/* Fonction de mise à jour du contenu des dropdowns avec les options générées (texte ou objets) */
+function updateDropdownOptions(dropdownNumber, options, property) {
+  // Choix du dropdown (1, 2 et 3)
+  const dropdownId = `dd${dropdownNumber}-list`;
+  const dropdown = document.getElementById(dropdownId);
+  // Si le dropdown n'est pas trouvé alors message d'erreur
+  if (!dropdown) {
+    console.error(`Dropdown with ID ${dropdownId} not found.`);
+    return;
+  }
+  // Effacement du du contenu existant
+  dropdown.innerHTML = "";
+
+  if (Array.isArray(options)) {
+    options.forEach((option) => {
+      const optionElement = document.createElement("p");
+      // Check du type d'option
+      if (typeof option === "string") {
+        optionElement.textContent = option.toLowerCase();
+      } else if (typeof option === "object" && property in option) {
+        optionElement.textContent = option[property].toLowerCase();
+      } else {
+        console.error(`Invalid option format: ${option}`);
+        return;
+      }
+      // Evenement au click sur l'option
+      optionElement.onclick = function () {
+        selectItem(this);
+      };
+      // Ajout de l'élement dans le dropdown
+      dropdown.appendChild(optionElement);
+    });
+  }
+}
+
+/* Fonction de mise à jour du contenu des dropdowns avec les options générées (texte ou objets) 
 function updateDropdownOptions(dropdownNumber, options, property) {
   // Choix du dropdown (1, 2 et 3)
   const dropdownId = `dd${dropdownNumber}-list`;
@@ -149,6 +204,6 @@ function updateDropdownOptions(dropdownNumber, options, property) {
       selectItem(this);
     };
     // Ajout de l'élement dans le dropdown
-    dropdown.appendChild(optionElement);
+    dropdown.appendChild(optionElement); 
   });
-}
+}*/
