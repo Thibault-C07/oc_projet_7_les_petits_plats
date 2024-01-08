@@ -73,7 +73,7 @@ function getUniqueFilters(results, filterType) {
 const selectedContainer = document.getElementById("selectedContainer");
 
 // Si aucun élément n'est sélectionné
-if (selectedContainer.children.length === 0 && results.length === 0) {
+if (selectedContainer.children.length === 0) {
   // Alors on fait apparaître tous les filtres pour chaque type
   Object.keys(ddListContainers).forEach((filterType) => {
     const allFiltersOfType = allFilters[filterType];
